@@ -1,0 +1,284 @@
+Time Complexity is a concept in computer science used to describe how the runtime of an algorithm increases with the size of the input. It's usually expressed using Big O notation, such as O(1), O(n), O(log n), O(n²), etc.
+
+Q 1. 🔍 What is Time Complexity?
+Time complexity tells you:
+
+How many operations an algorithm performs as the input size (n) grows.
+
+✅ Why is Time Complexity Important?
+Reason	Explanation
+1. Predict Performance	Helps estimate how fast or slow your code will run for large input sizes.
+2. Compare Algorithms	Allows you to compare two solutions and pick the one that scales better.
+3. Avoid Slowness	Inefficient time complexity (like O(n²)) can cause your program to crash or freeze for large inputs.
+4. Interview/Competitive Coding	A key concept in coding interviews and contests — correct logic alone is not enough if it's too slow.
+5. Resource Optimization	Helps save CPU time, energy, and cost in real-world applications (like search engines, AI, etc.).
+
+💡 Example:
+Suppose you want to search for a number in a list:
+
+Linear Search: Checks each element → Time Complexity: O(n)
+
+Binary Search: Divides list in half each time → Time Complexity: O(log n) (much faster for large data)
+
+
+Q 2. 📊 Types of Asymptotic Notations and Their Differences
+
+Notation	Name	Used For	Meaning	Tight Bound?	Mathematical Definition	Example
+O(f(n))	Big-O Notation	Worst-case	Time will not exceed this function	❌ No	T(n) ≤ c·f(n) for all n ≥ n₀	O(n²) → ≤ n²
+Ω(f(n))	Big-Omega Notation	Best-case	Time will at least be this function	❌ No	T(n) ≥ c·f(n) for all n ≥ n₀	Ω(n) → ≥ n
+Θ(f(n))	Theta Notation	Average/Exact-case	Time will grow exactly like this function	✅ Yes	c₁·f(n) ≤ T(n) ≤ c₂·f(n) for all n ≥ n₀	Θ(n) → exactly n
+o(f(n))	Little-o Notation	Strict upper bound	Time grows strictly less than f(n)	❌ No	T(n) < c·f(n) ∀ c > 0, as n → ∞	o(n²) → < n²
+ω(f(n))	Little-omega Notation	Strict lower bound	Time grows strictly more than f(n)	❌ No	T(n) > c·f(n) ∀ c > 0, as n → ∞	ω(n) → > n
+
+📌 Key Differences:
+Big-O (O): Upper bound → How slow it can get at worst.
+
+Big-Omega (Ω): Lower bound → How fast it can be at best.
+
+Theta (Θ): Tight bound → Exact behavior (both upper and lower).
+
+Little-o (o): Strict upper → Faster than a specific bound.
+
+Little-omega (ω): Strict lower → Slower than a specific bound.
+
+💡 Visual Hierarchy:
+markdown
+Copy
+Edit
+                 Θ(f(n))
+                /       \
+             Ω(f(n))   O(f(n))
+              |           |
+           ω(f(n))     o(f(n))
+🚀 Real-Life Analogy (Speed of a Car):
+Notation	Analogy
+O(n)	"I’ll take at most 2 hours to reach."
+Ω(n)	"I’ll take at least 2 hours to reach."
+Θ(n)	"I’ll take exactly 2 hours every time."
+o(n)	"I’ll never take full 2 hours — always less."
+ω(n)	"I’ll always take more than 2 hours."
+
+
+
+
+
+
+Q1. What is Time Complexity?
+ Time complexity measures how the execution time of an algorithm increases with the input size `n`.
+ Example:
+ If an algorithm takes 5 seconds for 100 items and 10 seconds for 200 items, it's linear time: O(n).
+ Real-life example:
+ Imagine scanning a list of names on paper. If the list has 100 names, you take 1 minute. For 200
+ names, it takes 2 minutes. This shows linear time complexity: O(n).
+
+
+ Q2. What are the types of Asymptotic Notations? Differentiate them.
+ Asymptotic notations help describe the time complexity of algorithms in different scenarios.
+ Notation Comparison Table:
+ | Notation | Case Type | Bound Type | Description | Example |
+ |----------|---------------|----------------|------------------------------------------|----------|
+ | O(f(n)) | Worst-case | Upper Bound | Max time it can take | O(n²) |
+ | Ω(f(n)) | Best-case | Lower Bound | Min time it will take | Ω(n) |
+ | Θ(f(n)) | Average/Exact | Tight Bound | Exact growth rate | Θ(n log n)|
+ | o(f(n)) | - | Strict Upper | Always faster than | o(n²) |
+ | ω(f(n)) | - | Strict Lower | Always slower than | ω(n) |
+ Real-life example:- O(n): You may check every document in a file cabinet.- Ω(1): You might find what you need in the first drawer.- Θ(n): On average, you check half the drawers.
+
+
+ Q3. Explain Best, Average, and Worst Case with Example.
+ These cases help understand how an algorithm performs under different input conditions.
+ Best Case:- Most favorable input.- Takes the least time.- Example: In Linear Search, the target is the first element → Ω(1).
+ Average Case:- Input is random.- Represents typical behavior.- Example: Target is somewhere in the middle → Θ(n).
+ Worst Case:- Least favorable input.- Takes the most time.- Example: Target is last or not found at all → O(n).
+ Real-life example:
+ Searching a word in a dictionary:- Best case: Found on the first page.- Average case: Found in the middle.- Worst case: Found on the last page or not at all.
+
+
+Q4. How do iterative and recursive solutions compare in terms of time and space
+ complexity?
+ Iterative and recursive solutions can solve the same problem but differ in how they use memory and
+ sometimes in execution time.
+ Time Complexity:- Both iterative and recursive solutions can have the same time complexity depending on the
+ problem.- Example: Factorial (iterative vs recursive) both have O(n) time.
+ Space Complexity:- Iterative: Uses constant space O(1), because it uses loops.- Recursive: Uses additional space O(n) due to function call stack.
+ Conclusion:- Iteration is usually more space-efficient.- Recursion is more elegant and suitable for divide-and-conquer problems (like Merge Sort).
+
+
+ Q5. How does amortized analysis differ from average case analysis?
+ Amortized Analysis:- Describes the average time per operation over a sequence of operations, **even if a single
+ operation is costly**.- Used when occasional operations are expensive but rare.- Example: Array resizing in dynamic array (like ArrayList).
+ Average Case Analysis:- Describes the average time taken over all possible inputs of a given size.- Based on probability distribution of inputs.- Example: Average case of Linear Search is O(n/2).
+ Difference:- Amortized looks at cost over time (sequence of operations).- Average looks at expected cost over all possible inputs.
+
+
+ Q6. Write a program to compute the time complexity of nested loops.
+ for (int i = 0; i < n; i++) {
+ for (int j = 0; j < n; j++) {
+ // Constant time operation
+ }
+ }
+ // Time Complexity: O(n²)
+
+
+ Q7. Implement a function that performs linear search and counts steps.
+ def linear_search(arr, target):
+ steps = 0
+ for i in range(len(arr)):
+ steps += 1
+ if arr[i] == target:
+ return i, steps
+ return -1, steps
+
+
+ Q8. Simulate recursion and count stack depth using a custom counter.
+def simulate_recursion(n, depth=0):
+ if n == 0:
+ return depth
+ return simulate_recursion(n - 1, depth + 1)
+ # simulate_recursion(5) will return 5 as the stack depth
+
+
+ Q9. Compare Bubble Sort and Merge Sort (time and space).
+ Bubble Sort:- Time: O(n²)- Space: O(1)
+ Merge Sort:- Time: O(n log n)- Space: O(n)
+ Merge Sort is much faster on large data and uses extra space for merging.
+
+
+ Q10. What is Linear Search?
+ Linear Search checks each element one by one until it finds the target or reaches the end.
+ Time Complexity: O(n)
+ Used on unsorted data.
+
+
+ Q11. What is the prerequisite for Binary Search to work?
+ The array or list must be **sorted** in ascending or descending order.
+
+
+ Q12. Why is Binary Search more efficient than Linear Search?
+ Binary Search eliminates half of the search space in each step.- Time Complexity: O(log n)- Linear Search checks each element: O(n)
+
+
+ Q13. Can Binary Search be used in Linked List?
+ No, because linked lists do not allow random access in O(1) time.
+ To reach the middle, we must traverse nodes = O(n)
+
+
+ Q14. Implement Linear Search for list of names.
+ def search_name(names, target):
+ for i in range(len(names)):
+ if names[i] == target:
+ return i
+ return -1
+
+
+ Q15. Implement Recursive and Iterative Binary Search.
+ # Iterative
+ def binary_search_iterative(arr, target):
+ left, right = 0, len(arr) - 1
+ while left <= right:
+ mid = (left + right) // 2
+if arr[mid] == target:
+ return mid
+ elif arr[mid] < target:
+ left = mid + 1
+ else:
+ right = mid - 1
+ return -1
+ # Recursive
+ def binary_search_recursive(arr, target, left, right):
+ if left > right:
+ return -1
+ mid = (left + right) // 2
+ if arr[mid] == target:
+ return mid
+ elif arr[mid] < target:
+ return binary_search_recursive(arr, target, mid + 1, right)
+ else:
+ return binary_search_recursive(arr, target, left, mid - 1)
+
+
+ 
+ Q16. Binary Search for first and last occurrence of a number.
+ def first_occurrence(arr, target):
+ res = -1
+ left, right = 0, len(arr) - 1
+ while left <= right:
+ mid = (left + right) // 2
+ if arr[mid] == target:
+ res = mid
+ right = mid - 1
+ elif arr[mid] < target:
+ left = mid + 1
+ else:
+ right = mid - 1
+ return res
+ def last_occurrence(arr, target):
+ res = -1
+ left, right = 0, len(arr) - 1
+ while left <= right:
+ mid = (left + right) // 2
+ if arr[mid] == target:
+ res = mid
+ left = mid + 1
+ elif arr[mid] < target:
+ left = mid + 1
+ else:
+ right = mid - 1
+ return res
+
+
+ Q17. How does Bubble Sort work?
+ Bubble Sort repeatedly swaps adjacent elements if they are in the wrong order.
+ Each pass 'bubbles' the largest element to the end.
+Time Complexity: O(n²)
+ Space: O(1)
+
+
+ Q18. Time Complexity of Merge Sort?
+ Merge Sort divides the array into halves and merges them after sorting.
+ Time: O(n log n)
+ Space: O(n)
+
+
+ Q19. How is recursion used in Merge Sort?
+ Merge Sort uses recursion to divide the array into smaller parts until one element remains, then
+ merges them in sorted order.
+ Example:
+ merge_sort([5, 2, 4, 1]) → calls merge_sort([5,2]) and merge_sort([4,1]) recursively
+
+
+
+ Q20. Implement Merge Sort recursively.
+ def merge_sort(arr):
+ if len(arr) <= 1:
+ return arr
+ mid = len(arr) // 2
+ left = merge_sort(arr[:mid])
+ right = merge_sort(arr[mid:])
+ return merge(left, right)
+ def merge(left, right):
+ result = []
+ i = j = 0
+ while i < len(left) and j < len(right):
+ if left[i] < right[j]:
+ result.append(left[i])
+ i += 1
+ else:
+ result.append(right[j])
+ j += 1
+ result.extend(left[i:])
+ result.extend(right[j:])
+ return result
+
+
+
+ Q21. Compare Merge Sort with Bubble Sort by counting steps.
+ Add a step counter inside both merge and bubble sort loops.
+ Compare total steps for small vs large arrays.
+ Bubble Sort will take much more steps as data grows (O(n²) vs O(n log n)).
+
+
+
+ Q22. Visualize Bubble and Merge Sort operations.
+ Use libraries like matplotlib or Pygame to show sorting steps visually.
+ Each step can draw bars for elements and swap animations to understand the process
