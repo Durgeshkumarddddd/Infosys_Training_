@@ -46,6 +46,10 @@ class StackUsingArray {
             else {
                 System.out.println("Invalid no : ");
             }
+    
         }while (k != 0);
+        sc.close();
     }
+
+    
 }
