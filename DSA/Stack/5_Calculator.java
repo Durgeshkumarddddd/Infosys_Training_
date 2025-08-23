@@ -34,7 +34,7 @@ class Calculator {
 
         for (int i = 0; i < str.length; i++) {
 
-            if (str[i] >= 45 && str[i] <= 57) {
+            if (str[i] >= 48 && str[i] <= 57) {
                 j++;
                 opd[j] = str[i];
             } else {
@@ -47,7 +47,12 @@ class Calculator {
 
                     while (k >= 0 && a <= b) {
                         j++;
-                        opd[j] = opr[k--];
+                        opd[j] = opr[k];
+                        k--;
+
+                        if (k == -1) {
+                            break;
+                        }
 
                         b = precedenceOf(opr[k]);
                     }
@@ -57,12 +62,43 @@ class Calculator {
             }
 
         }
+        while (k != -1) {
+            j++;
+            opd[j] = opr[k--];
+        }
         
-        System.out.println(opd);
-        System.out.println(opr);
 
+        // postfix Evaluation 
+        int[] stack = new int[10];
+        int s = -1 ;
 
+        for (int i = 0; i <= j; i++) {
 
+            if (opd[i] >= 48 && opd[i] <= 57) {
+                s++;
+                stack[s] = opd[i] - 48;
+            } else {
+                
+                int b = stack[s];
+                s--;
+                int a = stack[s];
+                s--;
+                int c = 0;
 
+                if (opd[i] == '+') {
+                    c = a + b;
+                } else if (opd[i] == '-') {
+                    c = a - b;
+                } else if (opd[i] == '*') {
+                    c = a * b;
+                } else if (opd[i] == '/') {
+                    c = a / b;
+                }
+                s++;
+                stack[s] = c;
+            }
+        }
+       System.out.println(stack[s]);
+       
     }
 }
