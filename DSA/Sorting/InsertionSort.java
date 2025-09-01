@@ -1,9 +1,17 @@
 class InsertionSort {
 
-void InsertionSort(int [] arr){
-
-    for (int i = 0 ; i < arr.length ; i++){
-        for (int j = 0 ; j < arr.length ;);
+     public static void InsertionSort(int[] arr) {
+    
+        // since first element is already sorted that's why loop start from 1 to n ;
+        for (int i = 1; i < arr.length; i++) {
+        
+            int temp = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > temp) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = temp;
     }
 }
 
@@ -13,8 +21,7 @@ void InsertionSort(int [] arr){
         InsertionSort(arr);
 
         for (int i = 0 ; i <  arr.length ; i++ ){
-            for (int j )
-            System.out.printlna(arr[i]+" ");
+            System.out.print(arr[i]+" ");
         }
     }
 }
