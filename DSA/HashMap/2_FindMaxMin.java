@@ -8,8 +8,8 @@ class Student {
     public static Map<String, Double> findMaxMinScorers(Map<String, Double> studentMarks) {
         //Implement your logic here and change the return statement accordingly
         
-        for (int i : Map.keySet())
-
+        
+        
 		return null;
 	}
 
